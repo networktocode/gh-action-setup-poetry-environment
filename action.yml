@@ -1,10 +1,22 @@
 ---
 name: "Setup the environment"
 description: "This action creates the Poetry environment and load virtual environment from cache if cache exists."
+inputs:
+  python-version:
+    description: "Python version that will be deployed"
+    required: false
+    default: "3.9"
+  cache-version:
+    description: "Cache version for the environment, can be used to invalidate the current cache"
+    required: false
+    default: ""
 outputs:
   cache-used:
     description: "The property that defines if cache was used"
     value: "${{ steps.cached-poetry.outputs.cache-hit }}"
+  python-version:
+    description: "Exact python version used"
+    value: "${{ steps.python-setup.outputs.python-version }}"
 runs:
   using: "composite"
   steps:
@@ -12,7 +24,7 @@ runs:
       uses: "actions/setup-python@v2"
       id: "python-setup"
       with:
-        python-version: "3.9"
+        python-version: "${{ inputs.python-version }}"
     - name: "Log: Install Poetry"
       run: "echo Installing Poetry"
       shell: "bash"
@@ -27,7 +39,7 @@ runs:
       id: "cached-poetry"
       with:
         path: "~/.cache/pypoetry/virtualenvs/"
-        key: "${{ runner.os }}-poetry-${{ steps.python-setup.outputs.python-version }}-${{ hashFiles('./poetry.lock') }}"
+        key: "${{ runner.os }}-poetry-${{ steps.python-setup.outputs.python-version }}-${{ hashFiles('./poetry.lock') }}${{ cache-version }}"
     - name: "Install environment"
       run: "poetry install"
       shell: "bash"
