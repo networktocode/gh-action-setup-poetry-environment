@@ -9,7 +9,8 @@ key: "${{ runner.os }}-poetry-${{ steps.python-setup.outputs.python-version }}-$
 
 * Typically, the value of the first variable is `Linux`
 * The second variable contains the python version. The value `3.9.7` is the example that can be used.
-* The last variable calculates the hash of the `poetry.lock` file. If the `poetry.lock` is updated, then the hash is different, which means that the key is different.
+* The third variable calculates the hash of the `poetry.lock` file. If the `poetry.lock` is updated, then the hash is different, which means that the key is different.
+* The last variable is the value of the input variable.
 
 The following is the example of the key:
 ```
