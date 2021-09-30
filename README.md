@@ -4,7 +4,7 @@ This action can be used to set up the Poetry Environment. The action tries to lo
 
 The following key syntax is used to check if the cache exists:
 ```
-key: "${{ runner.os }}-poetry-${{ steps.python-setup.outputs.python-version }}-${{ hashFiles('./poetry.lock') }}"
+key: "${{ runner.os }}-poetry-${{ steps.python-setup.outputs.python-version }}-${{ hashFiles('./poetry.lock') }}${{ inputs.cache-version }}"
 ```
 
 * Typically, the value of the first variable is `Linux`
