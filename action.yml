@@ -2,6 +2,10 @@
 name: "Setup the environment"
 description: "This action creates the Poetry environment and load virtual environment from cache if cache exists."
 inputs:
+  poetry-install-options:
+    description: "Options pass to the poetry install command"
+    required: false
+    default: "--only dev"
   python-version:
     description: "Python version that will be deployed"
     required: false
@@ -41,5 +45,5 @@ runs:
         path: "~/.cache/pypoetry/virtualenvs/"
         key: "${{ runner.os }}-poetry-${{ steps.python-setup.outputs.python-version }}-${{ hashFiles('./poetry.lock') }}${{ inputs.cache-version }}"
     - name: "Install environment"
-      run: "poetry install"
+      run: "poetry install ${{ inputs.poetry-install-options }}"
       shell: "bash"
