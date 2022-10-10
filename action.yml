@@ -25,7 +25,7 @@ runs:
   using: "composite"
   steps:
     - name: "Set up Python"
-      uses: "actions/setup-python@v2"
+      uses: "actions/setup-python@v4"
       id: "python-setup"
       with:
         python-version: "${{ inputs.python-version }}"
@@ -42,7 +42,7 @@ runs:
       run: "echo Checking cache"
       shell: "bash"
     - name: "Cache"
-      uses: "actions/cache@v2"
+      uses: "actions/cache@v3"
       id: "cached-poetry"
       with:
         path: "~/.cache/pypoetry/virtualenvs/"
