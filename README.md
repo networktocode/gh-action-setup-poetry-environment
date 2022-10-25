@@ -23,6 +23,8 @@ If the key is changed, then this action invalidates the cache and creates a new 
 
 * `python-version`: Defines the python version which will be deployed on the system. Example values are: `3.6`, `3.7`, `3.8`, `3.9`. Defaults to `3.9`.
 * `cache-version`: Can be used to specify the different version of the cache. This string is appended to the key. Defaults to empty string.
+* `poetry-install-options`: Specifies any additional options pass to Poetry when installing dependencies. Defaults to `--only dev`.
+
 ## Output variables
 
 * `cache-used`: Returns `True` if the environment was loaded from the cache, or empty string if the fresh environment is installed.
