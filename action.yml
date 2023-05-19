@@ -33,7 +33,7 @@ runs:
       run: "echo Installing Poetry"
       shell: "bash"
     - name: "Install Poetry"
-      run: "curl -sSL https://install.python-poetry.org | python -"
+      run: "curl -sSL https://install.python-poetry.org | python - --version 1.4.2"
       shell: "bash"
     - name: "Add poetry to PATH"
       run: "ln -s /root/.local/bin/poetry /usr/local/bin/poetry"
