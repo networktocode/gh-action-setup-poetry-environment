@@ -7,9 +7,9 @@ inputs:
     required: false
     default: "--only dev"
   poetry-version:
-    description: "Python version that will be deployed"
+    description: "Python version that will be deployed. Leave blank for latest."
     required: false
-    default: "1.4.2"
+    default: "--version 1.4.2"
   python-version:
     description: "Python version that will be deployed"
     required: false
@@ -37,7 +37,7 @@ runs:
       run: "echo Installing Poetry"
       shell: "bash"
     - name: "Install Poetry"
-      run: "curl -sSL https://install.python-poetry.org | python - --version {{ inputs.python-version }}"
+      run: "curl -sSL https://install.python-poetry.org | python - {{ inputs.python-version }}"
       shell: "bash"
     - name: "Add poetry to PATH"
       run: "ln -s /root/.local/bin/poetry /usr/local/bin/poetry"
