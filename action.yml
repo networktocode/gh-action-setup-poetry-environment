@@ -9,7 +9,7 @@ inputs:
   python-version:
     description: "Python version that will be deployed"
     required: false
-    default: "3.10"
+    default: "3.11"
   cache-version:
     description: "Cache version for the environment, can be used to invalidate the current cache"
     required: false
