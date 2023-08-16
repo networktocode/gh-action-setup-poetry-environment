@@ -40,7 +40,7 @@ runs:
       run: |
         if [ ${{inputs.poetry-version }} ]; then 
           "curl -sSL https://install.python-poetry.org | python -  --version ${{ inputs.poetry-version }}"
-        elif [ ${{inputs.poetry-version }} = "" ]; then
+        else
           "curl -sSL https://install.python-poetry.org | python -"
         fi
       shell: "bash"
