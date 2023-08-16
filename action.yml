@@ -37,11 +37,12 @@ runs:
       run: "echo Installing Poetry"
       shell: "bash"
     - name: "Install Poetry"
+      run: |
+        if [ -z "${{ inputs.poetry-version }}"; then
+          "curl -sSL https://install.python-poetry.org | python -"
+        else
+          "curl -sSL https://install.python-poetry.org | python -  --version ${{ inputs.poetry-version }}"
       shell: "bash"
-       - if: ${{ env.env_text == '' }}
-         run: "curl -sSL https://install.python-poetry.org | python -"
-       - if: ${{ env.env_text != '' }}
-          run: "curl -sSL https://install.python-poetry.org | python -  --version ${{ inputs.poetry-version }}"
     - name: "Add poetry to PATH"
       run: "ln -s /root/.local/bin/poetry /usr/local/bin/poetry"
       shell: "bash"
