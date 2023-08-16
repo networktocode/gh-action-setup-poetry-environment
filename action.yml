@@ -42,6 +42,7 @@ runs:
           "curl -sSL https://install.python-poetry.org | python -"
         else
           "curl -sSL https://install.python-poetry.org | python -  --version ${{ inputs.poetry-version }}"
+        fi
       shell: "bash"
     - name: "Add poetry to PATH"
       run: "ln -s /root/.local/bin/poetry /usr/local/bin/poetry"
