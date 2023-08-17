@@ -38,10 +38,10 @@ runs:
       shell: "bash"
     - name: "Install Poetry"
       run: |
-        if [ ${{inputs.poetry-version }} ]; then 
-          "curl -sSL https://install.python-poetry.org | python -  --version ${{ inputs.poetry-version }}"
-        else
+        if [ -z "${{ inputs.poetry-version }}"; then
           "curl -sSL https://install.python-poetry.org | python -"
+        else
+          "curl -sSL https://install.python-poetry.org | python -  --version ${{ inputs.poetry-version }}"
         fi
       shell: "bash"
     - name: "Add poetry to PATH"
