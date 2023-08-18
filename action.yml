@@ -9,7 +9,7 @@ inputs:
   poetry-version:
     description: "Poetry version that will be deployed. Leave blank for latest. Example: 1.4.2"
     required: false
-    default: "1.5.0"
+    default: ""
   python-version:
     description: "Python version that will be deployed"
     required: false
