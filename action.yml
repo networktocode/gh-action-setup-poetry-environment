@@ -38,13 +38,13 @@ runs:
       shell: "bash"
     - name: "Install Poetry"
       run: |
-        "if [ -z ${{ inputs.poetry-version }} ]
+        if [ -z "${{ inputs.poetry-version }}" ]
         then
           echo "\$poetry-version empty"
           curl -sSL https://install.python-poetry.org | python -
         else
-          curl -sSL https://install.python-poetry.org | python -
-        fi"
+          curl -sSL https://install.python-poetry.org | python - --version 1.5.0
+        fi
       # run: |
       #  if [ -z "${{ inputs.poetry-version }}" ]; then
       #    
