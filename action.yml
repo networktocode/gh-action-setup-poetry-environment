@@ -37,7 +37,8 @@ runs:
       run: "echo Installing Poetry"
       shell: "bash"
     - name: "Install Poetry"
-      run: "curl -sSL https://install.python-poetry.org | python -"
+      run: |
+        "curl -sSL https://install.python-poetry.org | python -"
       # run: |
       #  if [ -z "${{ inputs.poetry-version }}" ]; then
       #    
