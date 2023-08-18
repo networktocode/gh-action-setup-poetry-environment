@@ -9,7 +9,7 @@ inputs:
   poetry-version:
     description: "Poetry version that will be deployed. Leave blank for latest. Example: 1.4.2"
     required: false
-    default: ""
+    default: "1.5.0"
   python-version:
     description: "Python version that will be deployed"
     required: false
@@ -40,17 +40,10 @@ runs:
       run: |
         if [ -z "${{ inputs.poetry-version }}" ]
         then
-          echo "\$poetry-version empty"
           curl -sSL https://install.python-poetry.org | python -
         else
-          curl -sSL https://install.python-poetry.org | python - --version 1.5.0
+          curl -sSL https://install.python-poetry.org | python - --version ${{ inputs.poetry-version }}
         fi
-      # run: |
-      #  if [ -z "${{ inputs.poetry-version }}" ]; then
-      #    
-      #  else
-      #    "curl -sSL https://install.python-poetry.org | python - --version ${{ inputs.poetry-version }}"
-      #  fi
       shell: "bash"
     - name: "Add poetry to PATH"
       run: "ln -s /root/.local/bin/poetry /usr/local/bin/poetry"
