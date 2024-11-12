@@ -33,6 +33,7 @@ runs:
       id: "python-setup"
       with:
         python-version: "${{ inputs.python-version }}"
+        cache: "poetry"
     - name: "Log: Install Poetry"
       run: "echo Installing Poetry"
       shell: "bash"
