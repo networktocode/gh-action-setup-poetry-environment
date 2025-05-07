@@ -50,7 +50,7 @@ runs:
       shell: "bash"
     - name: "Install Virtualenv compatible with Poetry 1.X"
       if: startsWith(inputs.poetry-version, '1.')
-      run: poetry self add @20.30.0
+      run: poetry self add virtualenv@20.30.0
       shell: "bash"
     - name: "Log: Check cache"
       run: "echo Checking cache"
