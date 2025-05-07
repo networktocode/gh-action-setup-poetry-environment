@@ -49,7 +49,7 @@ runs:
       run: "ln -s /root/.local/bin/poetry /usr/local/bin/poetry"
       shell: "bash"
     - name: "Install Virtualenv compatible with Poetry 1.X"
-      if: startsWith(inputs.poetry-version, '1.')
+      if: "startsWith(inputs.poetry-version, '1.')"
       run: "poetry self add virtualenv@20.30.0"
       shell: "bash"
     - name: "Log: Check cache"
