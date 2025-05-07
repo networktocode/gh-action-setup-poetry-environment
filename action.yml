@@ -49,12 +49,8 @@ runs:
       run: "ln -s /root/.local/bin/poetry /usr/local/bin/poetry"
       shell: "bash"
     - name: "Install Virtualenv compatible with Poetry 1.X"
-      run: |
-        POETRY_VERSION=$(poetry --version | awk '{print $2}')
-        if [[ $(printf "%s\n" "$POETRY_VERSION" "2.0.0" | sort -V | head -n 1) != "$POETRY_VERSION" ]]; then
-          echo "Poetry version is less than 2.0.0"
-          ~/.local/share/pypoetry/venv/bin/pip install virtualenv==20.30.0
-        fi
+      if: startsWith(inputs.poetry-version, '1.')
+      run: poetry self add @20.30.0
       shell: "bash"
     - name: "Log: Check cache"
       run: "echo Checking cache"
