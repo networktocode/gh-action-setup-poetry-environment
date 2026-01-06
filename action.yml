@@ -40,9 +40,9 @@ runs:
       run: |
         if [ -z "${{ inputs.poetry-version }}" ]
         then
-          curl -sSL https://install.python-poetry.org | python -
+          pipx install poetry 
         else
-          curl -sSL https://install.python-poetry.org | python - --version ${{ inputs.poetry-version }}
+          pipx install poetry==${{ inputs.poetry-version }}
         fi
       shell: "bash"
     - name: "Add poetry to PATH"
