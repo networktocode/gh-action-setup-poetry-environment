@@ -44,6 +44,8 @@ runs:
         else
           pipx install poetry==${{ inputs.poetry-version }}
         fi
+      env:
+        PIPX_DEFAULT_PYTHON: ${{ steps.python-setup.outputs.python-path }}
       shell: "bash"
     - name: "Add poetry to PATH"
       run: "ln -s /root/.local/bin/poetry /usr/local/bin/poetry"
