@@ -18,6 +18,10 @@ inputs:
     description: "Cache version for the environment, can be used to invalidate the current cache"
     required: false
     default: ""
+  install_environment:
+    description: "Flag to toggle poetry install"
+    required: false
+    default: "true"
 outputs:
   cache-used:
     description: "The property that defines if cache was used"
@@ -64,5 +68,6 @@ runs:
         path: "~/.cache/pypoetry/virtualenvs/"
         key: "${{ runner.os }}-poetry-${{ steps.python-setup.outputs.python-version }}-${{ hashFiles('./poetry.lock') }}${{ inputs.cache-version }}"
     - name: "Install environment"
+      if: inputs.install_environment == 'true'
       run: "poetry install ${{ inputs.poetry-install-options }}"
       shell: "bash"
